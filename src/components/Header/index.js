@@ -12,7 +12,7 @@ import Menu from "./menu"
 //  vh, vw는 뷰포트의 너비값과 높이값에 따라 달라지는 값
 //  vh는 뷰포트 높이값의 1/100 단위 (e.g. 900px일 때 1vh = 9px)
 const HeaderWrapper = styled.nav`
-  height: 10vh;
+  height: 8vh;
   display: flex;
   background-color: #fff;
   position: relative;
@@ -23,9 +23,10 @@ const HeaderWrapper = styled.nav`
   padding: 0 5vw;
   z-index: 2;
   align-self: center;
+  min-height: 50px;
   @media (max-width: 768px){
     position: sticky;
-    height: 8vh;
+    height: 6vh;
     top: 0;
     left: 0;
     right: 0;
