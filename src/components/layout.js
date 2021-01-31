@@ -7,25 +7,44 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
 
-import Header from "./header"
-import "./layout.css"
+import Header from "./Header"
+import Footer from "./Footer"
+//import "./layout.css"
+
+const LayoutWrapper = styled.div`
+  background-color: var(--bg);
+  color: var(--textNormal);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--textTitle);
+  }
+  a {
+    color: var(--textLink);
+  }
+  a:hover {
+    color: var(--textLinkHover);
+  }
+  blockquote {
+    color: var(--textNormal);
+  }
+  code,
+  kbd,
+  samp {
+    color: var(--textCode);
+  }
+  transition: color 0.2s ease-out, background 0.2s ease-out
+`
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+    <LayoutWrapper>
+      <Header />
       <div
         style={{
           margin: `0 auto`,
@@ -34,17 +53,9 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        <Footer/>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 
