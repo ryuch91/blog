@@ -8,53 +8,60 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./Header"
 import Footer from "./Footer"
+import Sidebar from "./Sidebar"
 //import "./layout.css"
 
 const LayoutWrapper = styled.div`
-  background-color: var(--bg);
-  color: var(--textNormal);
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--textTitle);
-  }
-  a {
-    color: var(--textLink);
-  }
-  a:hover {
-    color: var(--textLinkHover);
-  }
-  blockquote {
-    color: var(--textNormal);
-  }
-  code,
-  kbd,
-  samp {
-    color: var(--textCode);
-  }
-  transition: color 0.2s ease-out, background 0.2s ease-out
 `
 
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+//블로그의 모든 페이지의 틀이 되는 컴포넌트
 const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          description
+          author {
+            name
+          }
+          socials {
+            name
+            url
+          }
+          menu {
+            label
+            path
+          }
+        }
+      }
+    }
+  `)
   return (
     <LayoutWrapper>
-      <Header />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <Footer/>
-      </div>
+      <Header menus={data.site.siteMetadata.menu}/>
+      <MainWrapper>
+        <Sidebar />
+        <div
+          style={{
+            margin: `0 auto`,
+            maxWidth: 960,
+            padding: `0 1.0875rem 1.45rem`,
+          }}
+        >
+          <main>{children}</main>
+          <Footer/>
+        </div>
+      </MainWrapper>
     </LayoutWrapper>
   )
 }

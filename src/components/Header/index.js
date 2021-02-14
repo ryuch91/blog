@@ -11,7 +11,7 @@ import Menu from "./menu"
 //  CSS의 너비 값은 가장 가까운 부모 요소에 상대적인 영향을 받는 단점이 있음
 //  vh, vw는 뷰포트의 너비값과 높이값에 따라 달라지는 값
 //  vh는 뷰포트 높이값의 1/100 단위 (e.g. 900px일 때 1vh = 9px)
-const HeaderWrapper = styled.nav`
+const Wrapper = styled.nav`
   height: 8vh;
   display: flex;
   background-color: #fff;
@@ -38,23 +38,23 @@ const HeaderWrapper = styled.nav`
 //  flex-wrap : Items의 여러 줄 묶음(줄 바꿈)을 설정
 //    nowrap : 모든 item들을 한 줄에 표시 (기본값)
 //    wrap : item들을 여러 줄로 묶음
-const HeaderLeft = styled.div`
+const HomeLinkWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content : space-around;
 `
 
-const Header = () => {
+const Header = ({ menus }) => {
   return(
-    <HeaderWrapper>
-      <HeaderLeft>
+    <Wrapper>
+      <HomeLinkWrapper>
         <Logo/>
         <Title/>
         <DarkModeToggle/>
-      </HeaderLeft>
-      <Menu/>
-    </HeaderWrapper>
+      </HomeLinkWrapper>
+      <Menu menus={menus}/>
+    </Wrapper>
   )
 }
 

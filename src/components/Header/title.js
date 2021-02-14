@@ -1,8 +1,9 @@
-//Header의 로고 옆에 들어갈 사이트 제목
-
+/**
+* Header의 로고 옆에 들어갈 사이트 제목
+*/
 import React from "react"
 import styled from "styled-components"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 // display
 //  inline
@@ -39,19 +40,10 @@ const TitleLink = styled(Link)`
   margin: auto 1vw;
 `
 
-const Title = () => {
-  const data = useStaticQuery(graphql`
-    query{
-      site{
-        siteMetadata{
-          title
-        }
-      }
-    }
-  `)
+const Title = ({ title }) => {
   return(
     <TitleLink to="/">
-      {data.site.siteMetadata.title}
+      {title}
     </TitleLink>
   )
 }

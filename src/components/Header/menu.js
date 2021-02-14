@@ -100,8 +100,12 @@ const Hamburger = styled.div`
 const MenuWrapper = styled.div`
 `
 
-const Menu = () => {
+const Menu = ({ menus }) => {
 	const [menuOpen, setMenuOpen] = useState(false)
+	const menus_ = menus
+	const menuLinks = menus_.map(menu => {
+		return( <MenuLink to={menu.path}> {menu.label} </MenuLink> )
+	})
 	return (
 		<MenuWrapper>
 			<Toggle
@@ -111,9 +115,7 @@ const Menu = () => {
 				<Hamburger open={menuOpen} />
 			</Toggle>
 			<MenuBox open={!menuOpen}>
-				<MenuLink to="/about">About</MenuLink>
-				<MenuLink to="/404">Posts</MenuLink>
-				<MenuLink to="/404">Projects</MenuLink>
+				{menuLinks}
 			</MenuBox>
 		</MenuWrapper>
 	)
