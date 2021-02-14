@@ -1,17 +1,41 @@
+'use strict'
+
+const siteConfig = require("./config")
+
 module.exports = {
+  //////////////////////////////////////////
+  //      Site Configurations
+  //////////////////////////////////////////
   pathPrefix: "/blog",
   siteMetadata: {
-    title: `RoCK's Devlog`,
+    url: siteConfig.url,
+    title: siteConfig.title,
+    keywords: siteConfig.keywords,
+    description: siteConfig.description,
     author: {
-      name: `Ryu Chungkwon`,
-      summary: `Developer`,
+      name: siteConfig.author.name,
+      summary: siteConfig.author.summary,
     },
-    social: {
-      github: `ryuch91`
-    },
-    siteUrl: `https://ryuch91.github.io/blog`,
-    description: `개발 & 공부 정리`,
+    socials: [
+      { name: `github`, url: siteConfig.socials.github },
+      { name: `youtube`, url: siteConfig.socials.youtube },
+      { name: `twitter`, url: siteConfig.socials.twitter },
+      { name: `linkedin`, url: siteConfig.socials.linkedin },
+      { name: `telegram`, url: siteConfig.socials.telegram },
+      { name: `instagram`, url: siteConfig.socials.instagram },
+      { name: `facebook`, url: siteConfig.socials.facebook },
+      { name: `stackoverflow`, url: siteConfig.socials.stackoverflow },
+      { name: `freecodecamp`, url: siteConfig.socials.freecodecamp },
+    ],
+    disqusShortname: siteConfig.disqusShortname,
+    postsPerPage: siteConfig.postsPerPage,
+    googleAnalyticsId: siteConfig.googleAnalyticsId,
+    siteMenus: siteConfig.siteMenus,
+    techLabels: siteConfig.techLabels,
   },
+  ///////////////////////////////////////////
+  //      Site Plugins
+  ///////////////////////////////////////////
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -19,7 +43,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/contents/images`,
       },
     },
     `gatsby-transformer-sharp`, // 알맞은 크기와 해상도로 이미지를 생성해주는 라이브러리
@@ -27,15 +51,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
+        path: `${__dirname}/contents/assets`,
         name: `assets`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/contents/posts`,
+        name: `posts`,
       },
     },
     {
@@ -95,7 +119,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/blog-icon.png`, // site의 root에 relative하게 설정 (사이트의 icon 설정)
+        icon: `contents/assets/blog-icon.png`, // site의 root에 relative하게 설정 (사이트의 icon 설정)
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -103,5 +127,15 @@ module.exports = {
     //`gatsby-plugin-offline`,
     `gatsby-plugin-styled-components`, // Top Navigation Bar를 위해 포함
     `gatsby-plugin-dark-mode`, // Top Navigation Bar의 Darkmode toggle을 위해 포함
+    `gatsby-plugin-react-svg`, // SVG를 react component로 사용하기 위해서
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Raleway`,
+          `source sans pro\:300,400,400i,700` // font weight이나 style 추가 가능
+        ]
+      }
+    },
   ],
 }

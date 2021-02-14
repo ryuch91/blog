@@ -60,3 +60,23 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
+
+
+## Image Licenses
+
+LinkedIn icon
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+LinkedIn icon (black&white)
+<div>Icon made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed by CC BY 3.0</div>
+
+Social Links Circle Icons
+<a href='https://www.freepik.com/vectors/logo'>Logo vector created by alicia_mb - www.freepik.com</a>
+
+Social Links 
+- https://iconmonstr.com/telegram-5-svg/
+
+## 참고 사이트
+
+블로그 디자인
+- https://github.com/willjw3/gatsby-starter-developer-diary
